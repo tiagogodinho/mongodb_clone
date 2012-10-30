@@ -1,0 +1,1 @@
+require 'mongodb_clone'
