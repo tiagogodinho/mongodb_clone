@@ -1,0 +1,15 @@
+development:
+  sessions:
+    default:
+      database: mongodb_clone_development
+      hosts:
+        - localhost:27017
+
+production:
+  sessions:
+    default:
+      database: mongodb_clone_production
+      username: mongodb_clone
+      password: 12345678
+      hosts:
+        - mongodb_clone.example.com:27017
