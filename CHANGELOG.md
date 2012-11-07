@@ -1,4 +1,4 @@
-## Next Release
+## 0.1.0 - November 07, 2012
 
 ### Improvements
 
