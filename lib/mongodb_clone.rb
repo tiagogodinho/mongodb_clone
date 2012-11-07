@@ -44,7 +44,7 @@ module MongodbClone
 
       a = params.collect { |key, value| "-#{ key } #{ value }" if value }.compact.join(' ')
 
-      command = "mongorestore #{ a } #{ @path }"
+      command = "mongorestore --drop #{ a } #{ @path }"
 
       execute(command)
     end

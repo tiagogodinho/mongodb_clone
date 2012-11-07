@@ -2,6 +2,8 @@
 
 ### Improvements
 
+* Drop database before restore
+
 * Accept symbol in dump and restore.
 
 ``` ruby
