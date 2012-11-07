@@ -11,7 +11,7 @@ module MongodbClone
     end
 
     def dump(environment = 'production', session = 'default')
-      config = base_config[environment]['sessions'][session]
+      config = base_config[environment.to_s]['sessions'][session.to_s]
 
       params = {
         h: config['hosts'][0],
@@ -21,7 +21,7 @@ module MongodbClone
         o: "/tmp/#{ config['database'] }/#{ @id }"
       }
 
-      a = params.collect { |key, value| "-#{ key } #{ value }" }.join(' ')
+      a = params.collect { |key, value| "-#{ key } #{ value }" if value }.compact.join(' ')
 
       command = "mongodump #{ a }"
 
@@ -33,7 +33,7 @@ module MongodbClone
     end
 
     def restore(environment = 'development', session = 'default')
-      config = base_config[environment]['sessions'][session]
+      config = base_config[environment.to_s]['sessions'][session.to_s]
 
       params = {
         h: config['hosts'][0],

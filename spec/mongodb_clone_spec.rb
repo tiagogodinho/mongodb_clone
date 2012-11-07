@@ -12,6 +12,15 @@ describe MongodbClone::MongodbReplication do
 
       subject.dump
     end
+
+    context 'when dump the development database' do
+      it 'should dump the selected database' do
+        subject.id = '201210231843100200'
+        subject.should_receive(:execute).with('mongodump -h localhost:27017 -d mongodb_clone_development -o /tmp/mongodb_clone_development/201210231843100200')
+
+        subject.dump(:development)
+      end
+    end
   end
 
   describe '#restore' do
