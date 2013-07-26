@@ -21,7 +21,7 @@ module MongodbClone
         o: "/tmp/#{ config['database'] }/#{ @id }"
       }
 
-      a = params.collect { |key, value| "-#{ key } #{ value }" if value }.compact.join(' ')
+      a = params.collect { |key, value| "-#{ key } \"#{ value.to_s.gsub("\"", "\\\"") }\"" if value }.compact.join(' ')
 
       command = "mongodump #{ a }"
 
@@ -42,7 +42,7 @@ module MongodbClone
         p: config['password']
       }
 
-      a = params.collect { |key, value| "-#{ key } #{ value }" if value }.compact.join(' ')
+      a = params.collect { |key, value| "-#{ key } \"#{ value.to_s.gsub("\"", "\\\"") }\"" if value }.compact.join(' ')
 
       command = "mongorestore --drop #{ a } #{ @path }"
 
