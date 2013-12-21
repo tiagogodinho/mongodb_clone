@@ -1,4 +1,4 @@
-# MongodbClone
+# MongodbClone [![Gem Version](https://badge.fury.io/rb/mongodb_clone.png)](http://badge.fury.io/rb/mongodb_clone)
 
 Dump and restore databases easily.
 
