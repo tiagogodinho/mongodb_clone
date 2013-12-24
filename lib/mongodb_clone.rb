@@ -1,4 +1,5 @@
 require 'rails'
+require 'yaml'
 require 'mongodb_clone/engine'
 require 'mongodb_clone/version'
 
