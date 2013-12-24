@@ -1,5 +1,7 @@
 # MongodbClone [![Build Status](https://travis-ci.org/tiagogodinho/mongodb_clone.png?branch=master)](https://travis-ci.org/tiagogodinho/mongodb_clone) [![Dependency Status](https://gemnasium.com/tiagogodinho/mongodb_clone.png)](https://gemnasium.com/tiagogodinho/mongodb_clone) [![Gem Version](https://badge.fury.io/rb/mongodb_clone.png)](http://badge.fury.io/rb/mongodb_clone)
 
+[![Coverage Status](https://coveralls.io/repos/tiagogodinho/mongodb_clone/badge.png)](https://coveralls.io/r/tiagogodinho/mongodb_clone)
+
 Dump and restore databases easily.
 
 [Backup and Restoration Strategies & MongoDB Manual](http://docs.mongodb.org/manual/administration/backups/#database-dumps)

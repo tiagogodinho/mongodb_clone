@@ -14,6 +14,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'rails', '>= 3.2.0'
 
+  gem.add_development_dependency 'coveralls', '~> 0.7'
   gem.add_development_dependency 'rspec', '~> 2.11.0'
 
   gem.files         = `git ls-files`.split($/)
