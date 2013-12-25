@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe MongodbClone::MongodbReplication do
   before do
-    file = File.join(File.dirname(__FILE__), 'support', 'mongoid.yml')
+    file = File.join(File.dirname(__FILE__), '../', 'support', 'mongoid.yml')
     Rails.stub_chain(:root, :join).and_return(file)
   end
 
