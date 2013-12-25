@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{Write a gem summary}
   gem.homepage      = ''
 
-  gem.add_dependency 'rails', '>= 3.2.0'
+  gem.add_dependency 'railties', '>= 3.2.0'
 
   gem.add_development_dependency 'coveralls', '~> 0.7'
   gem.add_development_dependency 'rspec', '~> 2.14.0'
