@@ -9,17 +9,11 @@ module MongodbClone
     end
 
     def dump(environment = 'production', session = 'default')
-      config = base_config[environment.to_s]['sessions'][session.to_s]
+      config = get_config(environment, session)
 
-      params = {
-        h: config['hosts'][0],
-        d: config['database'],
-        u: config['username'],
-        p: config['password'],
-        o: "/tmp/#{ config['database'] }/#{ @id }"
-      }
+      params = default_params(config).merge({ o: "/tmp/#{ config['database'] }/#{ @id }" })
 
-      a = params.collect { |key, value| "-#{ key } \"#{ value.to_s.gsub("\"", "\\\"") }\"" if value }.compact.join(' ')
+      a = hash_to_inline_params(params)
 
       command = "mongodump #{ a }"
 
@@ -31,16 +25,9 @@ module MongodbClone
     end
 
     def restore(environment = 'development', session = 'default')
-      config = base_config[environment.to_s]['sessions'][session.to_s]
+      config = get_config(environment, session)
 
-      params = {
-        h: config['hosts'][0],
-        d: config['database'],
-        u: config['username'],
-        p: config['password']
-      }
-
-      a = params.collect { |key, value| "-#{ key } \"#{ value.to_s.gsub("\"", "\\\"") }\"" if value }.compact.join(' ')
+      a = hash_to_inline_params(default_params(config))
 
       command = "mongorestore --drop #{ a } #{ @path }"
 
@@ -48,6 +35,23 @@ module MongodbClone
     end
 
     private
+
+    def default_params(config)
+      {
+        h: config['hosts'][0],
+        d: config['database'],
+        u: config['username'],
+        p: config['password']
+      }
+    end
+
+    def get_config(environment, session)
+      base_config[environment.to_s]['sessions'][session.to_s]
+    end
+
+    def hash_to_inline_params(params)
+      params.collect { |key, value| "-#{ key } \"#{ value.to_s.gsub("\"", "\\\"") }\"" if value }.compact.join(' ')
+    end
 
     def base_config
       YAML.load_file(Rails.root.join('config/mongoid.yml'))
