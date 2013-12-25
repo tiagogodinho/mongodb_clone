@@ -1,3 +1,10 @@
+## 0.2.0 - December 25, 2013
+
+### Improvements
+
+* Add support to Rails 4
+* Use the gem `railties` instead of `rails`
+
 ## 0.1.1 - July 26, 2013
 
 ### Bug fixes
